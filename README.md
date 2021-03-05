@@ -16,9 +16,11 @@ PATCH /api/contacts/:id
 DELETE /api/contacts/:id
 
 #Running/Installing Locally
-You can fork this repo or clone locally
+
+*You can fork this repo or clone locally
 
 #CLI Commands
+
 npm install (to install dependencies with npm)
 
 yarn install (to install dependencies with yarn)
