@@ -1,5 +1,5 @@
 const Contact = require('../models/contactModel');
-// Handle index actions
+
 exports.index = (req, res) => {
     Contact.get((err, contacts) => {
         if (err) {
@@ -17,7 +17,7 @@ exports.index = (req, res) => {
 };
 // Handle create contact actions
 exports.new = (req, res) => {
-    const contact = new Contact();
+    var contact = new Contact();
     contact.name = req.body.name ? req.body.name : contact.name;
     contact.gender = req.body.gender;
     contact.email = req.body.email;
@@ -34,6 +34,7 @@ exports.new = (req, res) => {
             });
     });
 };
+
 // Handle view contact info
 exports.view = (req, res) => {
     Contact.findById(req.params.contact_id, (err, contact) => {

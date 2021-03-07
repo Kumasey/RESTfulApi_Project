@@ -9,12 +9,17 @@ const contactSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    gender: String,
-    phone: String,
-    create_date: {
-        type: Date,
-        default: Date.now
-    }
+    gender:{
+        type: String,
+        required: true
+    },
+    phone: {
+        type: String,
+        required: true
+    },
+},
+{
+        timestamps: true
 });
 
 const Contact = module.exports = mongoose.model('contact', contactSchema);
