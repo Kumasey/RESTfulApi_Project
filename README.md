@@ -20,5 +20,3 @@ yarn install (to install dependencies with yarn)
 node server.js (to launch app locally)
 
 nodemon (to launch app locally if using nodemon)
-
-

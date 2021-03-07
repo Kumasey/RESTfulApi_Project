@@ -1,6 +1,6 @@
 const express = require('express');
 const apiRoutes = require('./routes/api_routes');
-const bodyPaser = require('body-parser');
+
 const mongoose = require('mongoose');
 
 const app = express();
@@ -15,11 +15,6 @@ app.listen(PORT, () => {
 
 app.use('/api', apiRoutes);
 
-app.use(bodyPaser.urlencoded({
-    extended: true
-}));
-
-app.use(bodyPaser.json());
 
 mongoose.connect('mongodb://localhost:27017/restPractice', { useNewUrlParser: true, useUnifiedTopology: true });
 

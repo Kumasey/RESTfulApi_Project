@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const contactController = require('../controllers/contactController')
 
 router.get('/', (req, res) => {
     res.json({
@@ -7,6 +6,8 @@ router.get('/', (req, res) => {
         message: 'Welcome to restPractice!'
     });
 });
+
+const contactController = require('../controllers/contact.controller');
 
 router.route('/contacts')
     .get(contactController.index)
