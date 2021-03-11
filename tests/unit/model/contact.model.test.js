@@ -26,6 +26,10 @@ describe('Contact model', () => {
             contact1.gender = ""
             await expect(new Contact(contact1).validate()).rejects.toThrow();
           });
+        test('should throw a validation error if gender is any other', async () => {
+            contact1.gender = "Animal"
+            await expect(new Contact(contact1).validate()).rejects.toThrow();
+          });
           test('should throw a validation error if phone is invalid', async () => {
             contact1.phone = ""
             await expect(new Contact(contact1).validate()).rejects.toThrow();

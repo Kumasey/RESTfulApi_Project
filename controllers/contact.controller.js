@@ -17,7 +17,7 @@ exports.index = (req, res) => {
 };
 // Handle create contact actions
 exports.new = (req, res) => {
-    var contact = new Contact();
+    const contact = new Contact();
     contact.name = req.body.name ? req.body.name : contact.name;
     contact.gender = req.body.gender;
     contact.email = req.body.email;
@@ -25,25 +25,29 @@ exports.new = (req, res) => {
 // save the contact and check for errors
     contact.save((err) => {
         // Check for validation error
-        if (err)
-            res.json(err);
-        else
+        if (err) {
             res.json({
-                message: 'New contact created!',
-                data: contact
+                message: "Sorry, we only accept Female and Male as gender",
             });
+        }
+        res.json({
+            message: 'New contact created!',
+            data: contact
+        });
     });
 };
 
 // Handle view contact info
 exports.view = (req, res) => {
     Contact.findById(req.params.contact_id, (err, contact) => {
-        if (err)
+        if (err) {
             res.send(err);
+        }else{
         res.json({
             message: 'Contact details loading..',
             data: contact
         });
+    }
     });
 };
 // Handle update contact info
@@ -57,12 +61,14 @@ exports.update = (req, res) => {
         contact.phone = req.body.phone;
 // save the contact and check for errors
         contact.save((err) => {
-            if (err)
+            if (err) {
                 res.json(err);
+            } else {
             res.json({
                 message: 'Contact Info updated',
-                data: contact
+               data: contact
             });
+        }
         });
     });
 };

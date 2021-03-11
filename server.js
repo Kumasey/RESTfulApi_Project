@@ -21,7 +21,8 @@ app.listen(PORT, () => {
 app.use('/api', apiRoutes);
 
 
-mongoose.connect('mongodb://localhost:27017/restPractice', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/restPractice',
+{ useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
 
