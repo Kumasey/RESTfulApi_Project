@@ -105,16 +105,16 @@ beforeEach((done) => {
   
   test("PATCH /api/contacts/:contact_id", async () => {
     const post = await model.create({
-      name: "Michael",
+       name: "Michael",
        gender: "Male",
        email: "kkkkkk@gmail.com",
        phone: "4154555784",
     })
   
     const data = {
-       name: "New name",
+       name: "New Michael",
        gender: "Male",
-       email: "updated@gmail.com",
+       email: "new@gmail.com",
        phone: "4154555784",
     }
   
@@ -129,10 +129,12 @@ beforeEach((done) => {
         expect(response.body.data.gender).toBe(data.gender)
   
         // Check the data in the database
-        const newPost = await model.findOne({ _id: response.body._id })
+        const newPost = await model.findOne({ _id: response.body.data._id })
         expect(newPost).toBeTruthy()
         expect(newPost.name).toBe(data.name)
         expect(newPost.gender).toBe(data.gender)
+        expect(newPost.email).toBe(data.email)
+        expect(newPost.phone).toBe(data.phone)
       })
   })
 
@@ -146,7 +148,7 @@ beforeEach((done) => {
   
     await supertest(app)
       .delete("/api/contacts/" + post.id)
-      .expect(204)
+      .expect(200)
       .then(async () => {
         expect(await model.findOne({ _id: post.id })).toBeFalsy()
       })
